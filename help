@@ -1,0 +1,38 @@
+Importing Libraries:
+
+The script begins by importing the required libraries, including 'speech_recognition' for speech recognition, 'os' for system-level operations, 'webbrowser' for opening web URLs, 'openai' for interacting with the OpenAI GPT-3 model, 'datetime' for working with date and time, 'random' for generating random numbers, 'numpy' for numerical operations, and 'pyttsx3' for text-to-speech on Windows.
+Global Variables:
+
+The variable 'chatStr' is declared as an empty string, which will be used to maintain the conversation history with Jarvis.
+'chat' Function:
+
+The 'chat' function is used for chatting with Jarvis AI. It takes a 'query' as input and generates a response using the OpenAI GPT-3 model.
+It appends the user's query to 'chatStr', creates a prompt, and sends it to the GPT-3 model to get a response.
+The AI-generated response is passed to the 'speak' function to convert it into speech. The response is also appended to 'chatStr' for maintaining the conversation history.
+The function returns the AI-generated response as plain text.
+'ai' Function:
+
+The 'ai' function uses the OpenAI GPT-3 model to generate responses to given prompts.
+It takes a 'prompt' as input, sends it to the GPT-3 model, and extracts the AI-generated response from the API's response.
+The function also saves the prompt and the AI-generated response to a file named after the prompt in the 'Openai' folder.
+'speak' Function:
+
+The 'speak' function uses the 'pyttsx3' library to convert given text into speech.
+It initializes the text-to-speech engine, speaks the provided text, and waits for the speech to complete before proceeding.
+'takeCommand' Function:
+
+The 'takeCommand' function uses the 'speech_recognition' library to listen to the user's voice through the microphone.
+It recognizes the user's speech using Google's speech recognition API with the 'recognize_google' function and returns the recognized text as 'query'.
+If there's an exception during speech recognition, it returns an error message.
+Main Program:
+
+The program starts with a welcome message from Jarvis using the 'speak' function.
+It enters an infinite loop to keep listening for user input.
+The user's query is captured using 'takeCommand'.
+If the query contains keywords like "Open youtube," "Open wikipedia," or "Open google," Jarvis opens the respective website in the web browser.
+If the query contains "open music," it is supposed to open the music directory, but the 'musicPath' variable is not specified, so this feature needs to be added later.
+If the query contains "the time," Jarvis speaks the current time.
+If the query contains "Using artificial intelligence," Jarvis generates an AI response to the query using the 'ai' function.
+If the query contains "Jarvis Quit," the program exits.
+If the query contains "reset chat," the 'chatStr' variable is reset to start a fresh conversation.
+Otherwise, the user's query is passed to the 'chat' function to chat with Jarvis using AI-generated responses.
